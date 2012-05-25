@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Admiral' target in the 'Admiral' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
