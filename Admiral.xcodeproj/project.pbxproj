@@ -17,6 +17,7 @@
 		DA05D8AF156FF53C0089B70D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA05D88F156FF5390089B70D /* Cocoa.framework */; };
 		DA05D8B7156FF53D0089B70D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA05D8B5156FF53D0089B70D /* InfoPlist.strings */; };
 		DA05D8BA156FF53D0089B70D /* AdmiralTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05D8B9156FF53D0089B70D /* AdmiralTests.m */; };
+		DA05D8C41570044B0089B70D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA05D8C31570044B0089B70D /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +36,21 @@
 		DA05D892156FF5390089B70D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DA05D893156FF5390089B70D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DA05D894156FF5390089B70D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		DA05D897156FF5390089B70D /* Admiral-Info.plist */ = {isa = PBXFileReference; path = "Admiral-Info.plist"; sourceTree = "<group>"; };
+		DA05D897156FF5390089B70D /* Admiral-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Admiral-Info.plist"; sourceTree = "<group>"; };
 		DA05D899156FF5390089B70D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA05D89B156FF5390089B70D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DA05D89D156FF5390089B70D /* Admiral-Prefix.pch */ = {isa = PBXFileReference; path = "Admiral-Prefix.pch"; sourceTree = "<group>"; };
+		DA05D89D156FF5390089B70D /* Admiral-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Admiral-Prefix.pch"; sourceTree = "<group>"; };
 		DA05D89F156FF5390089B70D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		DA05D8A1156FF5390089B70D /* ADAppDelegate.h */ = {isa = PBXFileReference; path = ADAppDelegate.h; sourceTree = "<group>"; };
+		DA05D8A1156FF5390089B70D /* ADAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADAppDelegate.h; sourceTree = "<group>"; };
 		DA05D8A2156FF5390089B70D /* ADAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADAppDelegate.m; sourceTree = "<group>"; };
 		DA05D8A5156FF5390089B70D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		DA05D8AC156FF53C0089B70D /* AdmiralTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdmiralTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA05D8AD156FF53C0089B70D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		DA05D8B4156FF53C0089B70D /* AdmiralTests-Info.plist */ = {isa = PBXFileReference; path = "AdmiralTests-Info.plist"; sourceTree = "<group>"; };
+		DA05D8B4156FF53C0089B70D /* AdmiralTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AdmiralTests-Info.plist"; sourceTree = "<group>"; };
 		DA05D8B6156FF53D0089B70D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DA05D8B8156FF53D0089B70D /* AdmiralTests.h */ = {isa = PBXFileReference; path = AdmiralTests.h; sourceTree = "<group>"; };
+		DA05D8B8156FF53D0089B70D /* AdmiralTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdmiralTests.h; sourceTree = "<group>"; };
 		DA05D8B9156FF53D0089B70D /* AdmiralTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdmiralTests.m; sourceTree = "<group>"; };
+		DA05D8C31570044B0089B70D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA05D8C41570044B0089B70D /* Carbon.framework in Frameworks */,
 				DA05D890156FF5390089B70D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +78,7 @@
 		DA05D880156FF5370089B70D = {
 			isa = PBXGroup;
 			children = (
+				DA05D8C31570044B0089B70D /* Carbon.framework */,
 				DA05D895156FF5390089B70D /* Admiral */,
 				DA05D8B2156FF53C0089B70D /* AdmiralTests */,
 				DA05D88E156FF5390089B70D /* Frameworks */,
@@ -326,7 +330,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -353,7 +357,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;

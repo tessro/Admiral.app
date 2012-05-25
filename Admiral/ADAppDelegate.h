@@ -3,13 +3,33 @@
 //  Admiral
 //
 //  Created by Paul Rosania on 5/25/12.
-//  Copyright (c) 2012 CollegeJobConnect. All rights reserved.
+//  Copyright (c) 2012 Paul Rosania. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
 
-@interface ADAppDelegate : NSObject <NSApplicationDelegate>
+enum {
+    kADKeyH = 4,
+    kADKeyJ = 38,
+    kADKeyK = 40,
+    kADKeyL = 37,
+};
+
+enum {
+    kADDirectionUp = 0,
+    kADDirectionRight = (1 << 0),
+    kADDirectionDown = (1 << 1),
+    kADDirectionLeft = (1 << 2),
+};
+
+@interface ADAppDelegate : NSObject <NSApplicationDelegate> {
+    IBOutlet NSMenu *statusMenu;
+    NSStatusItem *statusItem;
+}
 
 @property (assign) IBOutlet NSWindow *window;
+
+- (void)moveFocus:(int)direction;
 
 @end

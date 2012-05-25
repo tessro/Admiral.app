@@ -3,7 +3,7 @@
 //  AdmiralTests
 //
 //  Created by Paul Rosania on 5/25/12.
-//  Copyright (c) 2012 CollegeJobConnect. All rights reserved.
+//  Copyright (c) 2012 Paul Rosania. All rights reserved.
 //
 
 #import "AdmiralTests.h"
