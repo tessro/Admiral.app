@@ -5,7 +5,9 @@
 Admiral registers vim-inspired global hotkeys for switching applications. It's
 like `screen` for your GUI!
 
-This is also a giant, horrible dirty hack. I make no apologies for this.
+I wrote Admiral in a fit of productivity-induced mouse-hating rage. It is a
+giant, horrible dirty hack. I make no apologies for this. I just want to get
+back to work, dammit!
 
 ## Installation
 
