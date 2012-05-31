@@ -18,6 +18,7 @@
 		DA05D8B7156FF53D0089B70D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA05D8B5156FF53D0089B70D /* InfoPlist.strings */; };
 		DA05D8BA156FF53D0089B70D /* AdmiralTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05D8B9156FF53D0089B70D /* AdmiralTests.m */; };
 		DA05D8C41570044B0089B70D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA05D8C31570044B0089B70D /* Carbon.framework */; };
+		DA516A941577FB520087C9E7 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = DA516A931577FB520087C9E7 /* README.markdown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DA05D8B8156FF53D0089B70D /* AdmiralTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdmiralTests.h; sourceTree = "<group>"; };
 		DA05D8B9156FF53D0089B70D /* AdmiralTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdmiralTests.m; sourceTree = "<group>"; };
 		DA05D8C31570044B0089B70D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		DA516A931577FB520087C9E7 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				DA05D8A1156FF5390089B70D /* ADAppDelegate.h */,
 				DA05D8A2156FF5390089B70D /* ADAppDelegate.m */,
+				DA516A931577FB520087C9E7 /* README.markdown */,
 				DA05D8A4156FF5390089B70D /* MainMenu.xib */,
 				DA05D896156FF5390089B70D /* Supporting Files */,
 			);
@@ -232,6 +235,7 @@
 				DA05D89A156FF5390089B70D /* InfoPlist.strings in Resources */,
 				DA05D8A0156FF5390089B70D /* Credits.rtf in Resources */,
 				DA05D8A6156FF5390089B70D /* MainMenu.xib in Resources */,
+				DA516A941577FB520087C9E7 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
