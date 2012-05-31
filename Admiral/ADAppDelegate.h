@@ -9,6 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
+typedef struct bounds {
+    int left;
+    int right;
+    int top;
+    int bottom;
+} edges_t;
+
 enum {
     kADKeyH = 4,
     kADKeyJ = 38,

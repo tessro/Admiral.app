@@ -87,25 +87,25 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler, EventRef theEvent, void 
                                 kCGWindowListOptionIncludingWindow;
     
     CFArrayRef windows = CGWindowListCopyWindowInfo(option, kCGNullWindowID);
-    CGRect sourceWindow;
+    edges_t sourceEdges;
     BOOL sourceWindowFound = NO;
     
     pid_t candidatePid = 0;
     CGWindowID candidateWindowId = 0;
-    int candidateX, candidateY;
+    edges_t candidateEdges;
     
     if (direction == kADDirectionUp) {
-        candidateX = 0;
-        candidateY = -INT_MAX;
+        candidateEdges.left = candidateEdges.right = 0;
+        candidateEdges.top = candidateEdges.bottom = -INT_MAX;
     } else if (direction == kADDirectionRight) {
-        candidateX = INT_MAX;
-        candidateY = 0;
+        candidateEdges.left = candidateEdges.right = INT_MAX;
+        candidateEdges.top = candidateEdges.bottom = 0;
     } else if (direction == kADDirectionDown) {
-        candidateX = 0;
-        candidateY = INT_MAX;
+        candidateEdges.left = candidateEdges.right = 0;
+        candidateEdges.top = candidateEdges.bottom = INT_MAX;
     } else { // left
-        candidateX = -INT_MAX;
-        candidateY = 0;
+        candidateEdges.left = candidateEdges.right = -INT_MAX;
+        candidateEdges.top = candidateEdges.bottom = 0;
     }
     
     for (int i = 0; i < CFArrayGetCount(windows); i++) {
@@ -119,6 +119,13 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler, EventRef theEvent, void 
         CFDictionaryRef boundsDict = CFDictionaryGetValue(window, kCGWindowBounds);
         CGRectMakeWithDictionaryRepresentation(boundsDict, &bounds);
         
+        // This is easier to understand when we're looping
+        edges_t currentEdges;
+        currentEdges.top    = bounds.origin.y;
+        currentEdges.bottom = bounds.origin.y + bounds.size.height;
+        currentEdges.left   = bounds.origin.x;
+        currentEdges.right  = bounds.origin.x + bounds.size.width;
+        
         pid_t pid;
         CFNumberRef pidRef = CFDictionaryGetValue(window, kCGWindowOwnerPID);
         CFNumberGetValue(pidRef, kCFNumberSInt32Type, &pid);
@@ -129,37 +136,37 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler, EventRef theEvent, void 
         
         if (layer == 0) { // Layer zero is where real windows live
             if (!sourceWindowFound) { // The first window in the layer is topmost
-                memcpy(&sourceWindow, &bounds, sizeof(CGRect));
+                memcpy(&sourceEdges, &currentEdges, sizeof(edges_t));
                 sourceWindowFound = YES;
                 NSLog(@"[source] (%0.0f, %0.0f) %0.0fx%0.0f", bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
             } else {
                 NSLog(@"[candidate] (%0.0f, %0.0f)\t%0.0fx%0.0f\t [pid=%i]", bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height, pid);
                 
+                // The current selection algorithm is very simple (and has a variety of flaws):
+                // 1. Is the closest edge past the perimeter of our window? (Only navigate to non-overlapping windows.)
+                // 2. Is the closest edge closer than our previous candidate?
+                
                 if (direction == kADDirectionUp) {
-                    if (bounds.origin.y < sourceWindow.origin.y && bounds.origin.y > candidateY) {
-                        candidateX = bounds.origin.x;
-                        candidateY = bounds.origin.y;
+                    if (currentEdges.bottom <= sourceEdges.top && currentEdges.bottom > candidateEdges.bottom) {
+                        memcpy(&candidateEdges, &currentEdges, sizeof(edges_t));
                         candidatePid = pid;
                         candidateWindowId = windowId;
                     }
                 } else if (direction == kADDirectionRight) {
-                    if (bounds.origin.x > sourceWindow.origin.x && bounds.origin.x < candidateX) {
-                        candidateX = bounds.origin.x;
-                        candidateY = bounds.origin.y;
+                    if (currentEdges.left >= sourceEdges.right && currentEdges.left < candidateEdges.left) {
+                        memcpy(&candidateEdges, &currentEdges, sizeof(edges_t));
                         candidatePid = pid;
                         candidateWindowId = windowId;
                     }
                 } else if (direction == kADDirectionDown) {
-                    if (bounds.origin.y > sourceWindow.origin.y && bounds.origin.y < candidateY) {
-                        candidateX = bounds.origin.x;
-                        candidateY = bounds.origin.y;
+                    if (currentEdges.top >= sourceEdges.bottom && currentEdges.top < candidateEdges.top) {
+                        memcpy(&candidateEdges, &currentEdges, sizeof(edges_t));
                         candidatePid = pid;
                         candidateWindowId = windowId;
                     }
                 } else { // left
-                    if (bounds.origin.x < sourceWindow.origin.x && bounds.origin.x > candidateX) {
-                        candidateX = bounds.origin.x;
-                        candidateY = bounds.origin.y;
+                    if (currentEdges.right <= sourceEdges.left && currentEdges.right > candidateEdges.right) {
+                        memcpy(&candidateEdges, &currentEdges, sizeof(edges_t));
                         candidatePid = pid;
                         candidateWindowId = windowId;
                     }
@@ -191,7 +198,7 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler, EventRef theEvent, void 
                 AXValueRef sizeRef;
                 AXUIElementCopyAttributeValue(window, kAXSizeAttribute, (CFTypeRef*)&sizeRef);
                 AXValueGetValue(sizeRef, kAXValueCGSizeType, &size);
-                if (candidateX == position.x && candidateY == position.y) {
+                if (candidateEdges.left == position.x && candidateEdges.top == position.y) {
                     targetWindow = window;
                     break;
                 }
