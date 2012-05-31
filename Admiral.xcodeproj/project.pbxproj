@@ -445,6 +445,7 @@
 				DA05D8BF156FF53D0089B70D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA05D8C0156FF53D0089B70D /* Build configuration list for PBXNativeTarget "AdmiralTests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +454,7 @@
 				DA05D8C2156FF53D0089B70D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
